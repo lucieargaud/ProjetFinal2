@@ -30,7 +30,6 @@ import com.inti.repository.IEspaceExpRepository;
 
 @RestController
 @RequestMapping("admin")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4201"})
 public class AdministrateurController {
 
 	@Autowired

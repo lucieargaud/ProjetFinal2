@@ -30,9 +30,8 @@ import com.inti.repository.IProprietaireRepository;
 import com.inti.repository.IEspaceExpRepository;
 
 @RestController
-@RequestMapping("client")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4201"})
-public class ClientController {
+@RequestMapping("utilisateur")
+public class UtilisateurController {
 
 	@Autowired 
 	IUtilisateurRepository icr;
