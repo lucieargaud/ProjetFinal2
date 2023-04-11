@@ -20,7 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString.Exclude;
 
-@Table(name = "g1_user")
+@Table(name = "g1p2_user")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

@@ -23,7 +23,7 @@ import lombok.NonNull;
 import lombok.ToString.Exclude;
 
 
-@Table(name = "g1_personne")
+@Table(name = "g1p2_personne")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,14 +46,13 @@ public abstract class Personne {
 	protected String mail;
 
 
-//	public Personne(int id, String nom, String prenom, String login, String mdp, String mail) {
-//		super();
-//		this.id = id;
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		this.login = login;
-//		this.mdp = mdp;
-//		this.mail = mail;
-//	}
+	public Personne(String nom, String prenom, String login, String mdp, String mail) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.mdp = mdp;
+		this.mail = mail;
+	}
 
 }

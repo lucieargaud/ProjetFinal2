@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString.Exclude;
 
-@Table(name="g1_user_attente")
+@Table(name="g1p2_user_attente")
 @Entity @AllArgsConstructor @NoArgsConstructor @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @PrimaryKeyJoinColumn(name="id_user")

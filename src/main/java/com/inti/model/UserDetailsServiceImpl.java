@@ -8,26 +8,62 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.inti.repository.IPersonneRepository;
+import com.inti.repository.IAdministrateurRepository;
+import com.inti.repository.IArtisteRepository;
+import com.inti.repository.IProprietaireRepository;
+import com.inti.repository.IUtilisateurRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	IPersonneRepository ipr;
+	IAdministrateurRepository iadr;
+	@Autowired
+	IArtisteRepository iarr;
+	@Autowired
+	IProprietaireRepository ipr;
+	@Autowired
+	IUtilisateurRepository iur;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Personne p = ipr.findByLogin(username);
-		if(p==null)
+		Administrateur admin = iadr.findByLogin(username);
+		Artiste artiste = iarr.findByLogin(username);
+		Proprietaire p = ipr.findByLogin(username);
+		Utilisateur u = iur.findByLogin(username);
+		
+		if(admin!=null)
+		{
+			return User.withUsername(admin.getLogin())
+				.password(admin.getMdp())
+				.roles("ADMIN")
+				.build();
+		}
+		else if(artiste!=null)
+		{
+			return User.withUsername(artiste.getLogin())
+				.password(artiste.getMdp())
+				.roles("ARTISTE")
+				.build();
+		}
+		else if(p!=null)
+		{
+			return User.withUsername(p.getLogin())
+				.password(p.getMdp())
+				.roles("PROPRIETAIRE")
+				.build();
+		}
+		else if(u!=null)
+		{
+			return User.withUsername(u.getLogin())
+				.password(u.getMdp())
+				.roles("UTILISATEUR")
+				.build();
+		}
+		else
 		{
 			throw new UsernameNotFoundException("Le login : " + username + " n'existe pas en BDD");
 		}
-		return User.withUsername(p.getLogin())
-				.password(p.getMdp())
-				.authorities("CLIENT") // => On passe par la fonction hasAuthorities
-//				.roles("CLIENT")
-				.build();
 	}
 
 

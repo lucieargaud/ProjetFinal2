@@ -10,4 +10,5 @@ import com.inti.model.Utilisateur;
 public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
 
 	List<Utilisateur> findByNom(String nom);
+	Utilisateur findByLogin(String login);
 }

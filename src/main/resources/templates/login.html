@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th= "https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+ <form th:action="@{/login}" method="post"> <!-- @ => Il prend en compte le chemin de Spring Security (il envoie au bon endroit)-->
+		<label>Login</label>
+		<input type="text" name="username">
+		
+		<label>Mot de passe</label>
+		<input type="text" name="password">
+		
+		<button type="submit">Valider</button>
+		<button><a href="/inscription">Inscription</a></button> <!-- Redirige vers une page interne -->
+	</form>
+
+</body>
+</html>

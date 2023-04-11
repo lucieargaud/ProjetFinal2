@@ -42,10 +42,10 @@ public class UtilisateurController {
 
 	//Consulter la liste des offres
 	
-		@GetMapping("consulterOffres")
-		public List<EspaceExp> listeOffres() 
+		@GetMapping("accueil")
+		public String listeOffres() 
 		{
-			return ior.findAll();
+			return "accueil";
 		}	
 		//Consulter les informations d'une offre selectionnée
 

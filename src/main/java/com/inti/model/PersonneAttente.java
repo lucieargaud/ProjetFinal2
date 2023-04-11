@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="g1_personne_attente")
+@Table(name="g1p2_personne_attente")
 @Entity @AllArgsConstructor @NoArgsConstructor @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Inheritance(strategy = InheritanceType.JOINED)

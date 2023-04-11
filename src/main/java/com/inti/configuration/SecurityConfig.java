@@ -49,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.withUser("client").password(passwordEncoder().encode("root")).roles("CLIENT");
 		
-	//	auth.userDetailsService(uds).passwordEncoder(mdpCrypte()); // L'un ou l'autre
 	} // Compare les infos de l'utilisateur récupéré et le mdp crypté
 	
 	@Bean

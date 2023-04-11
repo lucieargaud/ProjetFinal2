@@ -7,4 +7,5 @@ import com.inti.model.Proprietaire;
 @Repository
 public interface IProprietaireRepository extends JpaRepository<Proprietaire, Integer> {
 
+	Proprietaire findByLogin(String login);
 }

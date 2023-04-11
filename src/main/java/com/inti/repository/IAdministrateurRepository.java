@@ -8,4 +8,5 @@ import com.inti.model.Administrateur;
 @Repository
 public interface IAdministrateurRepository extends JpaRepository<Administrateur, Integer>{
 
+	Administrateur findByLogin(String login);
 }

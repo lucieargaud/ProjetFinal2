@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.ToString.Exclude;
 
-@Table(name = "g1_prop")
+@Table(name = "g1p2_prop")
 @Entity
 @Data
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })

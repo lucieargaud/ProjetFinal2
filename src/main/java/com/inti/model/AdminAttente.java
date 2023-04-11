@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Table(name="g1_admin_attente")
+@Table(name="g1p2_admin_attente")
 @Entity 
 @PrimaryKeyJoinColumn(name="id_admin")
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
