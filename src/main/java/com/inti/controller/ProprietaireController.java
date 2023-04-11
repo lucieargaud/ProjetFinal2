@@ -24,9 +24,8 @@ import com.inti.repository.IProprietaireRepository;
 import com.inti.repository.IEspaceExpRepository;
 
 @RestController
-@RequestMapping("gerant")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4201"})
-public class GerantController {
+@RequestMapping("proprietaire")
+public class ProprietaireController {
 	@Autowired
 	IUtilisateurRepository icr;
 	@Autowired
