@@ -6,13 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.model.Utilisateur;
 import com.inti.model.Proprietaire;
@@ -29,7 +23,7 @@ import com.inti.repository.IUtilisateurRepository;
 import com.inti.repository.IProprietaireRepository;
 import com.inti.repository.IEspaceExpRepository;
 
-@RestController
+@Controller
 @RequestMapping("utilisateur")
 public class UtilisateurController {
 

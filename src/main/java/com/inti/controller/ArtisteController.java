@@ -9,41 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.inti.model.Utilisateur;
-import com.inti.repository.IArtisteRepository;
-
-@RestController
+@Controller
 @RequestMapping("artiste")
 public class ArtisteController {
 
-	@Autowired
-	IArtisteRepository iar;
-	
-	
-	@GetMapping("listeClients")
-	public List<Utilisateur> listeClients()
-	{
-		return icr.findAll();
-	}
-	
-	@PostMapping("saveClient")
-	public Utilisateur saveClient(@RequestBody Utilisateur c)
-	{
-		return icr.save(c);
-	}
-	
-	@DeleteMapping("supprimerClient/{id}")
-	public void supprimerClient(@PathVariable("id") int id)
-	{
-		icr.deleteById(id);	
-	}
-	
-	@PutMapping("modifierClient/{id}")
-	public Utilisateur modifierClient(@RequestBody Utilisateur c)
-	{
-		return icr.save(c);
-	}
 }
