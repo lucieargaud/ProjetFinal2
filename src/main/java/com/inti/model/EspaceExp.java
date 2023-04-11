@@ -30,17 +30,23 @@ public class EspaceExp {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String type_bien;
-    private String adresse;
     private String ville;
-    private double prix;
     private double surface;
     private int nb_piece;
     private boolean meuble;
     private boolean achat;
     private boolean exterieur;
-    private String croquis;
     private String note;
-
+    
+    private int signalement;
+    private List<String> commentaire;
+    //Details
+	private String adresse;
+	private String informations;
+	private String croquis;
+	private double prix;
+	
+	
   
     
 
