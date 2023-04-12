@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.inti.model.Personne;
 import com.inti.model.Reclamation;
 import com.inti.model.Utilisateur;
 import com.inti.repository.IReclamationRepository;
@@ -58,8 +57,7 @@ public class AdministrateurController {
 		System.out.println(u.getNom() + u.getLogin());
 		iur.save(u);
 		return "redirect://localhost:8080/admin/listeUtilisateurs";
-	}
-	
+	}	
 	@GetMapping("listeReclamations")
 	public String listeReclamations(Model m) {
 		m.addAttribute("listeReclamations", irr.findAll());
