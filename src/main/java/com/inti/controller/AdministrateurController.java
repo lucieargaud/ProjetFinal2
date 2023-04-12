@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.inti.model.AdminAttente;
+//import com.inti.model.AdminAttente;
 import com.inti.model.Administrateur;
 import com.inti.model.Utilisateur;
-import com.inti.model.UtilisateurAttente;
+//import com.inti.model.UtilisateurAttente;
 import com.inti.model.Proprietaire;
-import com.inti.model.ProprietaireAttente;
-import com.inti.repository.IAdminAttenteRepository;
+//import com.inti.model.ProprietaireAttente;
+//import com.inti.repository.IAdminAttenteRepository;
 import com.inti.repository.IAdministrateurRepository;
-import com.inti.repository.IUtilisateurAttenteRepository;
+//import com.inti.repository.IUtilisateurAttenteRepository;
 import com.inti.repository.IUtilisateurRepository;
-import com.inti.repository.IProprietaireAttenteRepository;
+//import com.inti.repository.IProprietaireAttenteRepository;
 import com.inti.repository.IProprietaireRepository;
 import com.inti.repository.INoteRepository;
 
@@ -33,43 +33,43 @@ public class AdministrateurController {
 	@Autowired
 	IAdministrateurRepository iar;
 	
-	@Autowired
-	IAdminAttenteRepository iaar;
+//	@Autowired
+//	IAdminAttenteRepository iaar;
 	
 	@Autowired
 	IUtilisateurRepository icr;
 	
-	@Autowired
-	IUtilisateurAttenteRepository icar;
+//	@Autowired
+//	IUtilisateurAttenteRepository icar;
 	
 	@Autowired
 	IProprietaireRepository igr; 
 	
-	@Autowired
-	IProprietaireAttenteRepository igar; 
+//	@Autowired
+//	IProprietaireAttenteRepository igar; 
 	
 	@Autowired
 	INoteRepository inr;
 	
 	
-	// Client
-	@PostMapping("ajouterClient")
-	public UtilisateurAttente inscriptionClient(@RequestBody UtilisateurAttente c)
-	{
-		return icar.save(c);
-	}
-	 
-	@GetMapping("getClientsAttente")
-	public List<UtilisateurAttente> getClientsAttente()
-	{
-		return icar.findAll();
-	}
-	
-	@DeleteMapping("deleteClientAttente/{id}")
-	public void deleteClientAttente(@PathVariable("id") int id)
-	{
-		icar.deleteById(id);
-	}
+//	// Client
+//	@PostMapping("ajouterClient")
+//	public UtilisateurAttente inscriptionClient(@RequestBody UtilisateurAttente c)
+//	{
+//		return icar.save(c);
+//	}
+//	 
+//	@GetMapping("getClientsAttente")
+//	public List<UtilisateurAttente> getClientsAttente()
+//	{
+//		return icar.findAll();
+//	}
+//	
+//	@DeleteMapping("deleteClientAttente/{id}")
+//	public void deleteClientAttente(@PathVariable("id") int id)
+//	{
+//		icar.deleteById(id);
+//	}
 	
     // Validation du compte client
 	@PostMapping("validerClient")
@@ -102,24 +102,24 @@ public class AdministrateurController {
 		icr.save(c);
 	}
 	
-	// Admin
-	@PostMapping("ajouterAdmin")
-	public AdminAttente inscriptionAdmin(@RequestBody AdminAttente a)
-	{
-		return iaar.save(a);
-	}
-
-	@GetMapping("getAdminsAttente")
-	public List<AdminAttente> getAdminsAttente()
-	{
-		return iaar.findAll();
-	}
-	
-	@DeleteMapping("deleteAdminAttente/{id}")
-	public void deleteAdminAttente(@PathVariable("id") int id)
-	{
-		iaar.deleteById(id);
-	}
+//	// Admin
+//	@PostMapping("ajouterAdmin")
+//	public AdminAttente inscriptionAdmin(@RequestBody AdminAttente a)
+//	{
+//		return iaar.save(a);
+//	}
+//
+//	@GetMapping("getAdminsAttente")
+//	public List<AdminAttente> getAdminsAttente()
+//	{
+//		return iaar.findAll();
+//	}
+//	
+//	@DeleteMapping("deleteAdminAttente/{id}")
+//	public void deleteAdminAttente(@PathVariable("id") int id)
+//	{
+//		iaar.deleteById(id);
+//	}
 	
 	 // Validation du compte admin	
 	@PostMapping("validerAdmin")
@@ -152,25 +152,25 @@ public class AdministrateurController {
 	}
 
 	
-	// Gerant
-	@PostMapping("ajouterGerant")
-	public ProprietaireAttente inscriptionGerant(@RequestBody ProprietaireAttente g)
-	{
-			
-		return igar.save(g);
-	}
-		
-	@GetMapping("getGerantsAttente")
-	public List<ProprietaireAttente> getGerantsAttente()
-	{
-		return igar.findAll();
-	}
-	
-	@DeleteMapping("deleteGerantAttente/{id}")
-	public void deleteGerantAttente(@PathVariable("id") int id)
-	{
-		igar.deleteById(id);
-	}
+//	// Gerant
+//	@PostMapping("ajouterGerant")
+//	public ProprietaireAttente inscriptionGerant(@RequestBody ProprietaireAttente g)
+//	{
+//			
+//		return igar.save(g);
+//	}
+//		
+//	@GetMapping("getGerantsAttente")
+//	public List<ProprietaireAttente> getGerantsAttente()
+//	{
+//		return igar.findAll();
+//	}
+//	
+//	@DeleteMapping("deleteGerantAttente/{id}")
+//	public void deleteGerantAttente(@PathVariable("id") int id)
+//	{
+//		igar.deleteById(id);
+//	}
 	
 	 // Validation du compte admin
 	@PostMapping("validerGerant")

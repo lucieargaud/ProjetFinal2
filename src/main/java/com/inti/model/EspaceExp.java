@@ -1,4 +1,5 @@
 package com.inti.model;
+
 import java.util.*;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -19,48 +21,34 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString.Exclude;
 
-@Table(name="g1p2_offre")
-@Entity @AllArgsConstructor @NoArgsConstructor @Data
+@Table(name = "g1p2_offre")
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })
 @PrimaryKeyJoinColumn(name = "id_offre")
 
 public class EspaceExp {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String type_bien;
-    private String adresse;
-    private String ville;
-    private double prix;
-    private double surface;
-    private int nb_piece;
-    private boolean meuble;
-    private boolean achat;
-    private boolean exterieur;
-    private String croquis;
-    private String note;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String adresse;
+	private String ville;
+	private double prix;
+	private double surface;
 
-  
-    
+	@OneToOne
+	private Proprietaire proprietaire;
 
-public EspaceExp(String type_bien, String adresse, String ville, double prix, double surface, int nb_piece,
-			boolean meuble, boolean achat, boolean exterieur, String croquis) {
+	public EspaceExp(String adresse, String ville, double prix, double surface, Proprietaire proprietaire) {
 		super();
-		this.type_bien = type_bien;
 		this.adresse = adresse;
 		this.ville = ville;
 		this.prix = prix;
 		this.surface = surface;
-		this.nb_piece = nb_piece;
-		this.meuble = meuble;
-		this.achat = achat;
-		this.exterieur = exterieur;
-		this.croquis = croquis;
+		this.proprietaire = proprietaire;
 	}
 
-
-
 }
-
-
