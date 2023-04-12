@@ -37,3 +37,20 @@ MySQLDriver, SpringSecurity
  Liaison avec github : Team -> Push Branch master puis coller le lien du github utilisé </li><li>
  Push du projet créé </li>
 </ul>
+
+//Jour2// (Scrum master : Lucie Argaud)<br>
+11/04/2023<br>
+
+<ul>-Configuration Security
+ <li> Configuration Http <br>
+ Dans com.inti.configuration, le fichier SecurityConfig définit les rôles et les pages autorisées grâce à l'ojet HttpSecurity. On peut autoriser un ou plusieurs rôles à consulter des pages avec un certain RequestMapping et définir une page de login et d'accueil. Le fichier définit également une fonction BCryptPasswordEncoder pour avoir des mots de passe cyptés.</li><li>
+ Pour s'authentifier, la page UserDetailsServiceImpl cherche si l'id entré correspond à une des classes d'utilisateur et asigne le rôle correspondant.
+</li>
+</ul>
+
+<ul>- Admin
+ <li> Gestion des utilisateurs <br>
+ Lorsqu'un utilisateur se crée un compte, il est ajouté en base de donnée. L'administrateur a accès à une page qui répertorie tous les utilisateurs .</li><li>
+ Pour s'authentifier, la page UserDetailsServiceImpl cherche si l'id entré correspond à une des classes d'utilisateur et asigne le rôle correspondant.
+</li>
+</ul>
