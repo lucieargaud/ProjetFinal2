@@ -24,9 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/login", "/inscription", "/accueil").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
-			.antMatchers("/artiste/**").hasRole("ARTISTE")
-			.antMatchers("/proprietaire/**").hasRole("PROPRIETAIRE")
-			.antMatchers("/utilisateur/**").hasRole("UTILISATEUR")
+			.antMatchers("/artiste/**").hasAnyRole("ARTISTE", "ADMIN")
+			.antMatchers("/proprietaire/**").hasAnyRole("PROPRIETAIRE", "ADMIN")
+			.antMatchers("/utilisateur/**").hasAnyRole("UTILISATEUR", "ARTISTE", "PROPRIETAIRE", "ADMIN")
 			.anyRequest()
 			.authenticated()
 			.and()
@@ -41,11 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		auth.authenticationProvider(authProvider());
 		auth.inMemoryAuthentication()
-		.withUser("admin").password(passwordEncoder().encode("root")).roles("ADMIN", "PROPRIETAIRE", "ARTISTE", "UTILISATEUR")
+		.withUser("admin").password(passwordEncoder().encode("root")).roles("ADMIN")
 		.and()
-		.withUser("proprietaire").password(passwordEncoder().encode("root")).roles("PROPRIETAIRE", "CLIENT")
+		.withUser("proprietaire").password(passwordEncoder().encode("root")).roles("PROPRIETAIRE")
 		.and()
-		.withUser("artiste").password(passwordEncoder().encode("root")).roles("ARTISTE", "CLIENT")
+		.withUser("artiste").password(passwordEncoder().encode("root")).roles("ARTISTE")
 		.and()
 		.withUser("client").password(passwordEncoder().encode("root")).roles("CLIENT");
 		

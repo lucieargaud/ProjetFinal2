@@ -39,7 +39,7 @@ public class EspaceExp {
     private String note;
     
     private int signalement;
-    private List<String> commentaire;
+//    private List<String> commentaire;
     //Details
 	private String adresse;
 	private String informations;

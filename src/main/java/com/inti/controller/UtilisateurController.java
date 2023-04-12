@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.inti.model.Utilisateur;
 import com.inti.model.Proprietaire;
+import com.inti.model.Reclamation;
 import com.inti.model.EspaceExp;
 import com.inti.repository.IUtilisateurRepository;
 import com.inti.repository.IProprietaireRepository;
+import com.inti.repository.IReclamationRepository;
 import com.inti.repository.IEspaceExpRepository;
 
 @Controller
@@ -32,6 +35,8 @@ public class UtilisateurController {
 	IEspaceExpRepository ier;
 	@Autowired
 	IProprietaireRepository ipr;
+	@Autowired
+	IReclamationRepository irr;
 
 	@GetMapping("accueil")
 	public String accueilClient() {
@@ -67,17 +72,17 @@ public class UtilisateurController {
 
 	// La recherche des différents éléments dans un espace choisi-> angular
 	
-	@GetMapping("getCommentairesOf/{id}")
-    public List<String> getCommentaire(@PathVariable("id")int id) {
-	try {
-		
-		System.out.println("Affichage des commentaires de l'espace expo " + id);
-		return ier.getReferenceById(id).getCommentaire();
-				} catch (Exception e) {
-		e.printStackTrace();
-	}
-	return null;
-}
+//	@GetMapping("getCommentairesOf/{id}")
+//    public List<String> getCommentaire(@PathVariable("id")int id) {
+//	try {
+//		
+//		System.out.println("Affichage des commentaires de l'espace expo " + id);
+//		return ier.getReferenceById(id).getCommentaire();
+//				} catch (Exception e) {
+//		e.printStackTrace();
+//	}
+//	return null;
+//}
 	
 	
 	// CRUD Espace Exposition 
@@ -105,6 +110,19 @@ public class UtilisateurController {
 	
 	// Signaler un espace 
 	
+	// Faire une réclammation
+	@GetMapping("ajouterReclamation")
+	public String reclammation() {
+		return "ajouterReclamation";
+	}
+	
+	@PostMapping("ajouterReclamation")
+	public String saveReclamation(@ModelAttribute("reclamation") Reclamation r)
+	{
+		System.out.println(r);
+		irr.save(r);
+		return "redirect:/accueil";
+	}
 	
 	
 }
