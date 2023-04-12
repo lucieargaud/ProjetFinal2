@@ -24,7 +24,14 @@ public class AdministrateurController {
 	
 	@Autowired
 	IReclamationRepository irr;
-
+	
+	
+	@GetMapping("accueil")
+	public String accueil() 
+	{
+		return "redirect://localhost:8080/accueil";
+	}	
+	
 	@GetMapping("listeUtilisateurs")
 	public String listeUtilisateurs(Model m) {
 		m.addAttribute("listeUtilisateurs", iur.findAll());
