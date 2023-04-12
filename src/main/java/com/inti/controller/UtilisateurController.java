@@ -67,17 +67,17 @@ public class UtilisateurController {
 
 	// La recherche des différents éléments dans un espace choisi-> angular
 	
-	@GetMapping("getCommentairesOf/{id}")
-    public List<String> getCommentaire(@PathVariable("id")int id) {
-	try {
-		
-		System.out.println("Affichage des commentaires de l'espace expo " + id);
-		return ier.getReferenceById(id).getCommentaire();
-				} catch (Exception e) {
-		e.printStackTrace();
-	}
-	return null;
-}
+//	@GetMapping("getCommentairesOf/{id}")
+//    public List<String> getCommentaire(@PathVariable("id")int id) {
+//	try {
+//		
+//		System.out.println("Affichage des commentaires de l'espace expo " + id);
+//		return ier.getReferenceById(id).getCommentaire();
+//				} catch (Exception e) {
+//		e.printStackTrace();
+//	}
+//	return null;
+//}
 	
 	
 	// CRUD Espace Exposition 
