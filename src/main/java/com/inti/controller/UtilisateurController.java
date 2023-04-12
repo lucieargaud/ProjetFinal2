@@ -1,10 +1,9 @@
 package com.inti.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 
 import org.springframework.stereotype.Controller;
 
@@ -27,120 +26,85 @@ import com.inti.repository.IEspaceExpRepository;
 @RequestMapping("utilisateur")
 public class UtilisateurController {
 
-	@Autowired 
-	IUtilisateurRepository icr;
 	@Autowired
-	IEspaceExpRepository ior;
+	IUtilisateurRepository iur;
 	@Autowired
-	IProprietaireRepository igr; 
+	IEspaceExpRepository ier;
+	@Autowired
+	IProprietaireRepository ipr;
 
-	//Consulter la liste des offres
+	@GetMapping("accueil")
+	public String accueilClient() {
+		return "accueil";
+	}
+
+	// Visualiser les détails des éléments (informations, prix) -> angular
 	
-		@GetMapping("accueil")
-		public String listeOffres() 
-		{
-			return "accueil";
-		}	
-		//Consulter les informations d'une offre selectionnée
-
-		
-		@GetMapping("consulterInfos/{id}")
-		public EspaceExp getoffre(@PathVariable("id") int id)
-		{
-			try {
-				System.out.println("Affichage des informations d'une offre selon son id");
-				return ior.findById(id).get();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			System.out.println("Affichage des informations d'une offre : " + id + "erreur sur l'id");
-			return null;
+	// Consulter la liste des espaces d'exposition
+	@GetMapping("consulterAllEspExpo")
+	public List<EspaceExp> getAllEspExpo(@PathVariable("id") int id) {
+		try {
+			System.out.println("Affichage des informations des espaces expo");
+			return ier.findAll();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	
-	/*Recherche avancée selon plusieurs critères : voir Angular
-	 * Faire un bouton 'details'qui affiche offres selon un critere donnee */ 
-	
-	
-	//CRUD client (inscription, liste, suppression) -> voir gerant
-	
-	@GetMapping("listeClients")
-	public List<Utilisateur> listeClients()
-	{
-		return icr.findAll();
+		return null;
 	}
-	
-	@PostMapping("saveClient")
-	public Utilisateur saveClient(@RequestBody Utilisateur c)
-	{
-		return icr.save(c);
-	}
-	
-	@DeleteMapping("supprimerClient/{id}")
-	public void supprimerClient(@PathVariable("id") int id)
-	{
-		icr.deleteById(id);	
-	}
-	
-	@PutMapping("modifierClient/{id}")
-	public Utilisateur modifierClient(@RequestBody Utilisateur c)
-	{
-		return icr.save(c);
-	}
-	
-	//Propositions d'offres
-//	@GetMapping("listePropositionsClient/{idClient}")
-//	public List<EspaceExp> listePropositionsClient(@PathVariable int idClient) {
-//		return icr.getReferenceById(idClient).getListePropositions();
-//	}
-//	
-//	@PutMapping("recevoirProposition/{idOffre}/{idClient}")
-//	public void recevoirProposition(@PathVariable int idOffre, @PathVariable int idClient) {
-//		Utilisateur c = icr.getReferenceById(idClient);
-//		EspaceExp o = ior.getReferenceById(idOffre);
-//		
-//		System.out.println("Récupération du client " + c.getId() + "pour recevoir l'offre " + o.getId());
-//		System.out.println("taille de la liste avant ajout : " + c.getListePropositions().size());
-//
-//		c.getListePropositions().add(o);
-//		icr.save(c);
-//
-//		System.out.println("taille de la liste après ajout : " + c.getListePropositions().size());
-//		System.out.println("liste proposition après ajout" + c.getListePropositions());
-//	}
-//		
-//	@PutMapping("recevoirListePropositions/{idGerant}/{idClient}")
-//	public void recevoirListePropositions( @PathVariable int idClient, @PathVariable int idGerant) {
-//		Utilisateur c = icr.getReferenceById(idClient);
-//		Proprietaire g = igr.getReferenceById(idGerant);
-//		System.out.println("Récupération du client " + c.getId() + "pour recevoir la liste du gérant " + g.getId());
-//		System.out.println("taille de la liste avant ajout : " + c.getListePropositions().size());
-//			
-//		c.getListePropositions().addAll( g.getListePropositionOffre());
-//		icr.save(c);
-//
-//		System.out.println("taille de la liste après ajout : " + c.getListePropositions().size());
-//	}
-//
-//	@DeleteMapping("retirerProposition/{idOffre}/{idClient}")
-//	public void retirerProposition(@PathVariable int idOffre, @PathVariable int idClient) {
-//		Utilisateur c = icr.getReferenceById(idClient);
-//		System.out.println("taille de la liste avant retrait : " + c.getListePropositions().size());
-//		c.getListePropositions().remove(ior.getReferenceById(idOffre));
-//		icr.save(c);
-//		System.out.println("taille de la liste après retrait : " + c.getListePropositions().size());
-//	}
-//	@PutMapping("sauvegarderOffre/{idOffre}/{idClient}")
-//	public void ajoutPropositionOffre(@PathVariable int idOffre, @PathVariable int idClient) {
-//		Utilisateur c = icr.getReferenceById(idClient);
-//		EspaceExp o = ior.getReferenceById(idOffre);
-//
-//		System.out.println("Récupération du client " + c.getId() + "pour l'offre " + o.getId());
-//		System.out.println("taille de la liste avant ajout : " + c.getListePropositions().size());
-//
-//		c.getListePropositions().add(o);
-//		icr.save(c);
-//
-//		System.out.println("taille de la liste après ajout : " + c.getListePropositions().size());
-//	}
 
+	// Consulter un espace d'exposition
+	@GetMapping("consulterEspExpo/{id}")
+	public EspaceExp getByIdEspExpo(@PathVariable("id") int id) {
+		EspaceExp e1 = new EspaceExp();
+		try {
+			System.out.println("Affichage des informations d'un espace expo selon son id");
+			e1=ier.getReferenceById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return e1;
+	}
+
+	// La recherche des différents éléments dans un espace choisi-> angular
+	
+	@GetMapping("getCommentairesOf/{id}")
+    public List<String> getCommentaire(@PathVariable("id")int id) {
+	try {
+		
+		System.out.println("Affichage des commentaires de l'espace expo " + id);
+		return ier.getReferenceById(id).getCommentaire();
+				} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+	
+	
+	// CRUD Espace Exposition 
+	@GetMapping("listeUtilisateur")
+	public List<Utilisateur> listeUtilisateurs() {
+		return iur.findAll();
+	}
+
+	@PostMapping("saveUtilisateur")
+	public Utilisateur saveUtilisateur(@RequestBody Utilisateur c) {
+		return iur.save(c);
+	}
+
+	@DeleteMapping("supprimerUtilisateur/{id}")
+	public void supprimerUtilisateur(@PathVariable("id") int id) {
+		iur.deleteById(id);
+	}
+
+	@PutMapping("modifierUtilisateur/{id}")
+	public Utilisateur modifierUtilisateur(@RequestBody Utilisateur c) {
+		return iur.save(c);
+	}
+	
+	// Commenter
+	
+	// Signaler un espace 
+	
+	
+	
 }
